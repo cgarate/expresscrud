@@ -1,0 +1,48 @@
+
+const express = require('express');
+const bodyParser = require('body-parser');
+const serveStatic = require('serve-static');
+const app = express();
+const users = [];
+
+app.set("view engine", "ejs");
+app.set("PORT", 8080);
+
+app.use(serveStatic(`${__dirname}/public`));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false }));
+
+app.get("/", (req, res) => {
+  res.render("index", {
+    name: req.query.name || "Carlos"
+  });
+
+});
+
+app.get("/register", (req, res) => {
+  res.render("register");
+});
+
+app.post("/register", (req, res) => {
+  users.push(req.body);
+  //res.redirect("/");
+  const name = req.body.email.split("@")[0];
+  res.render("index", { name });
+});
+
+app.get("/users", (req, res) => {
+  res.json(users);
+});
+
+app.get("/users/:email", (req,res) => {
+  const found = users.find(u => u.email === req.params.email);
+  res.json(found || {});
+});
+
+app.listen(app.get('PORT'), (err) => {
+  if (err) {
+    return console.error("Failed to start server.")
+  } else {
+    console.log(`Server is listening on port: ${app.get('PORT')}`);
+  }
+});

@@ -1,0 +1,28 @@
+{
+  "name": "express-crud",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "ejs": "^2.5.6",
+    "express": "^4.15.2",
+    "nodemon": "^1.11.0",
+    "serve-static": "^1.12.1"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cgarate/expresscrud.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cgarate/expresscrud/issues"
+  },
+  "homepage": "https://github.com/cgarate/expresscrud#readme",
+  "description": ""
+}
